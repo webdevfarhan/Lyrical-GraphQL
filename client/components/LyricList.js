@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class LyricsList extends Component {
   render() {
-    return <ul>LyricsList</ul>;
+    return <ul className='collection'>LyricsList</ul>;
   }
 }
 
