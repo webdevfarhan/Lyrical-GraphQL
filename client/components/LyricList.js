@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 class LyricsList extends Component {
   onLike(id) {
-    console.log(id);
+    this.props.mutate({ variables: { id } });
   }
 
   renderLyrics() {
@@ -23,4 +24,13 @@ class LyricsList extends Component {
   }
 }
 
-export default LyricsList;
+const mutation = gql`
+  mutation LikeLyric($id: ID) {
+    likeLyric(id: $id) {
+      id
+      likes
+    }
+  }
+`;
+
+export default graphql(mutation)(LyricsList);
